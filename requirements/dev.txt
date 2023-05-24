@@ -1,0 +1,8 @@
+-r base.txt
+
+uvicorn
+flake8
+black
+python-dotenv
+alembic
+isort
