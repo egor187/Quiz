@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres
+    restart: on-failure
+    volumes:
+      - ./db_volume:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env
+  quiz:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: on-failure
+    container_name: quiz
+    depends_on:
+      - db
